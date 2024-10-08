@@ -2,12 +2,14 @@ import { catchAsyncErrors } from "../middlewares/catchAsyncErrors.js";
 import ErrorHandler from "../middlewares/error.js";
 import User from "../models/userSchema.js";
 import { v2 as cloudinary } from "cloudinary";
+import { GenerateToken } from "../utils/jwtToken.js";
+import { json } from "express";
 
 export const register = catchAsyncErrors(async (req, res, next) => {
   if (!req.files || Object.keys(req.files).length === 0) {
     return next(new ErrorHandler("Avatar and Resume required", 400));
   }
-  
+
   const { avatar, resume } = req.files;
 
   console.log("Avatar", avatar);
@@ -71,8 +73,36 @@ export const register = catchAsyncErrors(async (req, res, next) => {
       url: cloudinaryResponseForResume.secure_url,
     },
   });
-  res.status(200).json({
-    success: true,
-    message: "User Registered",
-  });
+  GenerateToken(user, "User Registered", 201, res);
+});
+
+export const login = catchAsyncErrors(async (req, res, next) => {
+  const { email, password } = req.body;
+
+  if (!email || !password) {
+    return next(new ErrorHandler("Email and Passwords are required"));
+  }
+
+  const user = await User.findOne({ email }).select("+password");
+  if (!user) {
+    return next(new ErrorHandler("Invalid Email or Password"));
+  }
+  const isPasswordMatch = await user.comparePassword(password);
+  if (!isPasswordMatch) {
+    return next(new ErrorHandler("Invalid Email or Password"));
+  }
+  GenerateToken(user, "Logged In", 200, res);
+});
+
+export const logout = catchAsyncErrors(async (req, res, next) => {
+  res
+    .status(200)
+    .cookie("token", "", {
+      expires: new Date(Date.now()),
+      httpOnly: true,
+    })
+    .json({
+      success: true,
+      message: "Logged out",
+    });
 });

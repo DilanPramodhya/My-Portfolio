@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 import fileUpload from "express-fileupload";
 import dbConnection from "./database/dbConnection.js";
 import { errorMiddleware } from "./middlewares/error.js";
+import messageRouter from "./routers/messageRoutes.js";
 
 const app = express();
 dotenv.config({ path: "./config/config.env" });
@@ -27,8 +28,10 @@ app.use(
   })
 );
 
+app.use("/api/v1/message", messageRouter);
+
 dbConnection();
 
-app.use(errorMiddleware)
+app.use(errorMiddleware);
 
 export default app;

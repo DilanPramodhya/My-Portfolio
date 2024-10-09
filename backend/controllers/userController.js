@@ -167,3 +167,29 @@ export const updateProfile = catchAsyncErrors(async (req, res, next) => {
     user,
   });
 });
+
+export const updatePassword = catchAsyncErrors(async (req, res, next) => {
+  const { currentPassword, newPassword, confirmNewPassword } = req.body;
+  if (!currentPassword || !newPassword || !confirmNewPassword) {
+    return next(new ErrorHandler("Please fill all the fields", 400));
+  }
+
+  const user = await User.findById(req.user.id).select("+password");
+  const isPasswordMatch = await user.comparePassword(currentPassword);
+  if (!isPasswordMatch) {
+    return next(new ErrorHandler("Incorrect current password", 400));
+  }
+
+  if (newPassword !== confirmNewPassword) {
+    return next(
+      new ErrorHandler("New password and Confirm password doesn't match", 400)
+    );
+  }
+
+  user.password = newPassword;
+  await user.save();
+  res.status(200).json({
+    success: true,
+    message: "Password updated",
+  });
+});

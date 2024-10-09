@@ -1,4 +1,4 @@
-export const GenerateToken = (user, message, statusCode, res) => {
+export const generateToken = (user, message, statusCode, res) => {
   const token = user.generateJsonWebToken();
 
   res

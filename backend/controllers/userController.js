@@ -2,8 +2,10 @@ import { catchAsyncErrors } from "../middlewares/catchAsyncErrors.js";
 import ErrorHandler from "../middlewares/error.js";
 import User from "../models/userSchema.js";
 import { v2 as cloudinary } from "cloudinary";
-import { GenerateToken } from "../utils/jwtToken.js";
+import { generateToken } from "../utils/jwtToken.js";
 import { json } from "express";
+import { sendEmail } from "../utils/sendEmail.js";
+import crypto from "crypto";
 
 export const register = catchAsyncErrors(async (req, res, next) => {
   if (!req.files || Object.keys(req.files).length === 0) {
@@ -73,7 +75,7 @@ export const register = catchAsyncErrors(async (req, res, next) => {
       url: cloudinaryResponseForResume.secure_url,
     },
   });
-  GenerateToken(user, "User Registered", 201, res);
+  generateToken(user, "User Registered", 201, res);
 });
 
 export const login = catchAsyncErrors(async (req, res, next) => {
@@ -91,7 +93,7 @@ export const login = catchAsyncErrors(async (req, res, next) => {
   if (!isPasswordMatch) {
     return next(new ErrorHandler("Invalid Email or Password"));
   }
-  GenerateToken(user, "Logged In", 200, res);
+  generateToken(user, "Logged In", 200, res);
 });
 
 export const logout = catchAsyncErrors(async (req, res, next) => {
@@ -192,4 +194,74 @@ export const updatePassword = catchAsyncErrors(async (req, res, next) => {
     success: true,
     message: "Password updated",
   });
+});
+
+export const getUserForPortfolio = catchAsyncErrors(async (req, res, next) => {
+  const id = "67051e9e2a14bb09abdab712";
+  const user = await User.findById(id);
+  res.status(200).json({
+    success: true,
+    user,
+  });
+});
+
+export const forgotPassword = catchAsyncErrors(async (req, res, next) => {
+  const user = await User.findOne({ email: req.body.email });
+
+  if (!user) {
+    return next(new ErrorHandler("User not found", 404));
+  }
+
+  const resetToken = user.getResetPasswordToken();
+  await user.save({ validateBeforeSave: false });
+  const resetPasswordUrl = `${process.env.DASHBOARD_URL}/password/reset/${resetToken}`;
+  const message = `Your reset password token is :- \n\n ${resetPasswordUrl} \n\n If you haven't request for this please ignore it`;
+
+  try {
+    await sendEmail({
+      email: user.email,
+      subject: "Personal Portfolio Dashboard Recovery Password",
+      message,
+    });
+    res.status(200).json({
+      success: true,
+      message: `Email sent to ${user.email} successfully`,
+    });
+  } catch (error) {
+    user.resetPasswordExpire = undefined;
+    user.resetPasswordToken = undefined;
+    await user.save();
+    return next(new ErrorHandler(error.message, 500));
+  }
+});
+
+export const resetPassword = catchAsyncErrors(async (req, res, next) => {
+  const { token } = req.params;
+  const resetPasswordToken = crypto
+    .createHash("sha256")
+    .update(token)
+    .digest("hex");
+
+  const user = await User.findOne({
+    resetPasswordToken,
+    resetPasswordExpire: { $gt: Date.now() },
+  });
+  if (!user) {
+    return next(
+      new ErrorHandler(
+        "Reset password token is invalid or has been expired",
+        400
+      )
+    );
+  }
+  if (req.body.password !== req.body.confirmPassword) {
+    return next(
+      new ErrorHandler("Password and Confirm password do not match", 400)
+    );
+  }
+  user.password = req.body.password;
+  user.resetPasswordExpire = undefined;
+  user.resetPasswordToken = undefined;
+  await user.save();
+  generateToken(user, "Reset password successfully", 200, res);
 });

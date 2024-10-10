@@ -14,7 +14,7 @@ export const register = catchAsyncErrors(async (req, res, next) => {
 
   const { avatar, resume } = req.files;
 
-  console.log("Avatar", avatar);
+  // console.log("Avatar", avatar);
 
   const cloudinaryResponseForAvatar = await cloudinary.uploader.upload(
     avatar.tempFilePath,
@@ -27,7 +27,7 @@ export const register = catchAsyncErrors(async (req, res, next) => {
     );
   }
 
-  console.log("Resume", resume);
+  // console.log("Resume", resume);
 
   const cloudinaryResponseForResume = await cloudinary.uploader.upload(
     resume.tempFilePath,

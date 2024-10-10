@@ -10,6 +10,7 @@ import userRouter from "./routers/userRoutes.js";
 import timelineRouter from "./routers/timelineRoutes.js";
 import applicationRouter from "./routers/softwareApplicationRoutes.js";
 import skillRouter from "./routers/skillRoutes.js";
+import projectRouter from "./routers/projectRoutes.js";
 
 const app = express();
 dotenv.config({ path: "./config/config.env" });
@@ -38,6 +39,7 @@ app.use("/api/v1/user", userRouter);
 app.use("/api/v1/timeline", timelineRouter);
 app.use("/api/v1/softwareApplication", applicationRouter);
 app.use("/api/v1/skill", skillRouter);
+app.use("/api/v1/project", projectRouter);
 
 dbConnection();
 

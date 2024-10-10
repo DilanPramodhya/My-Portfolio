@@ -56,7 +56,7 @@ export const deleteApplication = catchAsyncErrors(async (req, res, next) => {
   res.status(200).json({
     success: true,
     message: "Software Application deleted",
-    softwareApplicationSvgId,
+    softwareApplication,
   });
 });
 

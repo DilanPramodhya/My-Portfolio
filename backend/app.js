@@ -9,6 +9,7 @@ import messageRouter from "./routers/messageRoutes.js";
 import userRouter from "./routers/userRoutes.js";
 import timelineRouter from "./routers/timelineRoutes.js";
 import applicationRouter from "./routers/softwareApplicationRoutes.js";
+import skillRouter from "./routers/skillRoutes.js";
 
 const app = express();
 dotenv.config({ path: "./config/config.env" });
@@ -36,6 +37,7 @@ app.use("/api/v1/message", messageRouter);
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/timeline", timelineRouter);
 app.use("/api/v1/softwareApplication", applicationRouter);
+app.use("/api/v1/skill", skillRouter);
 
 dbConnection();
 

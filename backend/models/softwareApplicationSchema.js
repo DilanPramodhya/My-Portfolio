@@ -18,6 +18,6 @@ const softwareApplicationSchema = new mongoose.Schema({
 });
 
 export const SoftwareApplication = mongoose.model(
-  "SoftwareApplication",
+  "Software_Application",
   softwareApplicationSchema
 );

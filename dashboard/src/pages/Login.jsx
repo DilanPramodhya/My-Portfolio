@@ -34,12 +34,12 @@ function ForgotPassword() {
   return (
     <div>
       <div className="w-full lg:grid lg:min-h-[100px] lg:grid-cols-2 xl:min-h-[100px]">
-        <div className="min-h-[100vh] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto grid w-[350px] gap-6">
+        <div className="min-h-[100vh] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-gray-600">
+          <div className="mx-auto grid w-[350px] p-10 gap-6 border-4 border-blue-700 bg-blue-200">
             <div className="grid gap-2 text-center">
               <h1 className="text-3xl font-bold">Login</h1>
               <p className="text-balance text-muted-foreground">
-                Enter your email below to login to your account
+                Enter your email & password below to login to your account
               </p>
             </div>
             <div className="grid gap-4">

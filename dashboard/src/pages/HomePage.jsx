@@ -18,9 +18,14 @@ import {
   LogOut,
   MessageSquareMore,
   Package,
+  Package2,
+  PanelLeft,
+  PencilRuler,
   User,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Button } from "@/components/ui/button";
 
 function HomePage() {
   const [active, setActive] = useState("");
@@ -46,7 +51,7 @@ function HomePage() {
     <>
       <div className="flex min-h-screen w-full flex-col bg-muted/40">
         <aside className="fixed inset-y-0 left-0 hidden w-14 flex-col border-r bg-background sm:flex z-50">
-          <nav className="flex flex-col items-center gap-4 px-2 sm:py-5">
+          <nav className="flex flex-col items-center  gap-4 px-2 sm:py-5">
             <Link className="group flex h-p w-p shrink-0 items-center justify-center gap-2 rounded-full">
               <Package className="h-8 w-8 transition-all group-hover:scale-110" />
               <span className="sr-only">Dashboard</span>
@@ -98,7 +103,7 @@ function HomePage() {
                     } transition-colors hover:text-foreground md:h-8 md:w-8`}
                     onClick={() => setActive("Add Skills")}
                   >
-                    <FolderGit className="w-6 h-6" />
+                    <PencilRuler className="w-6 h-6" />
                     <span className="sr-only">Add Skills</span>
                   </Link>
                 </TooltipTrigger>
@@ -201,6 +206,152 @@ function HomePage() {
             </TooltipProvider>
           </nav>
         </aside>
+        <header
+          className="sticky top-0 z-30 flex h-20 items-center gap-4 border-b bg-background px-4 
+                     sm:static sm:h-auto sm:border-4 sm:bg-transparent sm:px-10 max-[900px]:h-[100px]"
+        >
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button
+                size="icon"
+                variant="outline"
+                className="sm:hidden h-10 w-14 "
+              >
+                <PanelLeft className="h-10 w-10 " />
+                <span className="sr-only">Toggle Menu</span>
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="left" className="sm:max-w-xs">
+              <nav className="grid gap-6 text-lg font-medium">
+                <Link
+                  className="group flex h-10 w-10 shrink-0 items-center justify-center gap-2 rounded-full 
+                             bg-primary text-lg font-semibold text-primary-foreground md:text-base"
+                >
+                  <Package2 className="h-5 w-5 transition-all group-hover:scale-110" />
+                </Link>
+                <Link
+                  href="#"
+                  className={`flex items-center gap-4 px-2.5 ${
+                    active === "Add Project"
+                      ? "text-foreground"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                  onClick={() => setActive("Add Project")}
+                >
+                  <FolderGit className="h-5 w-5" />
+                  Add Project
+                </Link>
+                <Link
+                  href="#"
+                  className={`flex items-center gap-4 px-2.5 ${
+                    active === "Add Skill"
+                      ? "text-foreground"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                  onClick={() => setActive("Add Skill")}
+                >
+                  <PencilRuler Home className="h-5 w-5" />
+                  Add Skill
+                </Link>
+                <Link
+                  href="#"
+                  className={`flex items-center gap-4 px-2.5 ${
+                    active === "Add Application"
+                      ? "text-foreground"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                  onClick={() => setActive("Add Application")}
+                >
+                  <LayoutGrid className="h-5 w-5" />
+                  Add Application
+                </Link>
+                <Link
+                  href="#"
+                  className={`flex items-center gap-4 px-2.5 ${
+                    active === "Add Timeline"
+                      ? "text-foreground"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                  onClick={() => setActive("Add Timeline")}
+                >
+                  <History className="h-5 w-5" />
+                  Add Timeline
+                </Link>
+                <Link
+                  href="#"
+                  className={`flex items-center gap-4 px-2.5 ${
+                    active === "Messages"
+                      ? "text-foreground"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                  onClick={() => setActive("Messages")}
+                >
+                  <MessageSquareMore className="h-5 w-5" />
+                  Messages
+                </Link>
+                <Link
+                  href="#"
+                  className={`flex items-center gap-4 px-2.5 ${
+                    active === "Account"
+                      ? "text-foreground"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                  onClick={() => setActive("Account")}
+                >
+                  <User className="h-5 w-5" />
+                  Account
+                </Link>
+                <Link
+                  href="#"
+                  className={`flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground`}
+                  onClick={handleLogOut}
+                >
+                  <LogOut className="h-5 w-5" />
+                  Logout
+                </Link>
+              </nav>
+            </SheetContent>
+          </Sheet>
+          <div className="flex items-center gap-4 md:grow-0 sm:ml-16 sm:mt-5">
+            <img
+              src={user && user.avatar && user.avatar.url}
+              alt="avatar"
+              className="w-20 h-20 rounded-full max-[900px]:hidden"
+            />
+            <h1 className="text-4xl max-[900px]:text-2xl">
+              Welcome Back, {user.fullName}
+            </h1>
+          </div>
+        </header>
+        {() => {
+          switch (active) {
+            case "Dashboard":
+              // return <Dashboard />;
+              break;
+            case "Add Project":
+              // return <AddProject />;
+              break;
+            case "Add SKill":
+              // return <AddSkill />;
+              break;
+            case "Add Application":
+              // return <AddApplication />;
+              break;
+            case "Add Timeline":
+              // return <AddTimeline />;
+              break;
+            case "Messages":
+              // return <Messages />;
+              break;
+            case "Account":
+              // return <Account />;
+              break;
+
+            default:
+              // return <Dashboard />;
+              break;
+          }
+        }}
       </div>
     </>
   );

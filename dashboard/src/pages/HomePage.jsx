@@ -26,9 +26,16 @@ import {
 import { Link } from "react-router-dom";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
+import Dashboard from "./sub-components/Dashboard";
+import AddProject from "./sub-components/AddProject";
+import AddSkill from "./sub-components/AddSkill";
+import AddApplication from "./sub-components/AddApplication";
+import AddTimeline from "./sub-components/AddTimeline";
+import Messages from "./sub-components/Messages";
+import Account from "./sub-components/Account";
 
 function HomePage() {
-  const [active, setActive] = useState("");
+  const [active, setActive] = useState("Dashboard");
   const { isAuthenticated, error, user } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const navigateTo = useNavigate();
@@ -48,10 +55,9 @@ function HomePage() {
   }, [isAuthenticated, dispatch, error, navigateTo]);
 
   return (
-    <>
-      <div className="flex min-h-screen w-full flex-col bg-muted/40">
+      <div className="flex min-h-screen w-full flex-col bg-muted/40 ">
         <aside className="fixed inset-y-0 left-0 hidden w-14 flex-col border-r bg-background sm:flex z-50">
-          <nav className="flex flex-col items-center  gap-4 px-2 sm:py-5">
+          <nav className="flex flex-col items-center gap-4 px-2 sm:py-5">
             <Link className="group flex h-p w-p shrink-0 items-center justify-center gap-2 rounded-full">
               <Package className="h-8 w-8 transition-all group-hover:scale-110" />
               <span className="sr-only">Dashboard</span>
@@ -206,18 +212,16 @@ function HomePage() {
             </TooltipProvider>
           </nav>
         </aside>
-        <header
-          className="sticky top-0 z-30 flex h-20 items-center gap-4 border-b bg-background px-4 
-                     sm:static sm:h-auto sm:border-4 sm:bg-transparent sm:px-10 max-[900px]:h-[100px]"
-        >
+        <header className="sticky top-0 z-30 flex h-14 items-center gap-4 border-b bg-background px-4 sm:static 
+                sm:h-auto sm:border-0 sm:bg-transparent sm:px-6 max-[900px]:h-[100px]">
           <Sheet>
             <SheetTrigger asChild>
               <Button
                 size="icon"
                 variant="outline"
-                className="sm:hidden h-10 w-14 "
+                className="sm:hidden h-10 w-14"
               >
-                <PanelLeft className="h-10 w-10 " />
+                <PanelLeft className="h-5 w-5 " />
                 <span className="sr-only">Toggle Menu</span>
               </Button>
             </SheetTrigger>
@@ -242,7 +246,6 @@ function HomePage() {
                   Add Project
                 </Link>
                 <Link
-                  href="#"
                   className={`flex items-center gap-4 px-2.5 ${
                     active === "Add Skill"
                       ? "text-foreground"
@@ -250,7 +253,7 @@ function HomePage() {
                   }`}
                   onClick={() => setActive("Add Skill")}
                 >
-                  <PencilRuler Home className="h-5 w-5" />
+                  <PencilRuler className="h-5 w-5" />
                   Add Skill
                 </Link>
                 <Link
@@ -323,37 +326,28 @@ function HomePage() {
             </h1>
           </div>
         </header>
-        {() => {
+        {
+        (() => {
           switch (active) {
             case "Dashboard":
-              // return <Dashboard />;
-              break;
+              return <Dashboard />;
             case "Add Project":
-              // return <AddProject />;
-              break;
+              return <AddProject />;
             case "Add SKill":
-              // return <AddSkill />;
-              break;
+              return <AddSkill />;
             case "Add Application":
-              // return <AddApplication />;
-              break;
+              return <AddApplication />;
             case "Add Timeline":
-              // return <AddTimeline />;
-              break;
+              return <AddTimeline />;
             case "Messages":
-              // return <Messages />;
-              break;
+              return <Messages />;
             case "Account":
-              // return <Account />;
-              break;
-
+              return <Account />;
             default:
-              // return <Dashboard />;
-              break;
+              return <Dashboard />;
           }
-        }}
+        })()}
       </div>
-    </>
   );
 }
 

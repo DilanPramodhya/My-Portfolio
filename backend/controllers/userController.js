@@ -131,7 +131,7 @@ export const updateProfile = catchAsyncErrors(async (req, res, next) => {
     linkedInURL: req.body.linkedInURL,
   };
   if (req.files && req.files.avatar) {
-    const avatar = req.body.avatar;
+    const avatar = req.files.avatar;
     const user = await User.findById(req.user.id);
     const profileImageId = user.avatar.public_id;
     await cloudinary.uploader.destroy(profileImageId);
@@ -145,7 +145,7 @@ export const updateProfile = catchAsyncErrors(async (req, res, next) => {
     };
   }
   if (req.files && req.files.resume) {
-    const resume = req.body.resume;
+    const resume = req.files.resume;
     const user = await User.findById(req.user.id);
     const resumeId = user.resume.public_id;
     await cloudinary.uploader.destroy(resumeId);

@@ -12,6 +12,8 @@ import "react-toastify/dist/ReactToastify.css";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { getUser } from "./store/slices/userSlice";
+import "./App.css";
+
 const App = () => {
   const dispatch = useDispatch();
 

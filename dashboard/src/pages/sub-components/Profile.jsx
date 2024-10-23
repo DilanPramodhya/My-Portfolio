@@ -12,7 +12,7 @@ const Profile = () => {
           <div className="grid w-[100%] gap-6">
             <div className="grid gap-2">
               <h1 className="text-3xl font-bold">Profile</h1>
-              <p className="mb-5">Full profile preview</p>
+              <p className="mb-5 text-center font-bold text-xl">Full profile preview</p>
             </div>
           </div>
           <div className="grid gap-6">
@@ -22,6 +22,7 @@ const Profile = () => {
                 <img
                   src={user && user.avatar && user.avatar.url}
                   alt="avatar"
+                  className="w-full h-auto sm:w-72 sm:h-72 rounded-2xl"
                 />
               </div>
               <div className="grid gap-4 w-full sm:w-72">
@@ -29,6 +30,7 @@ const Profile = () => {
                 <img
                   src={user && user.resume && user.resume.url}
                   alt="resume"
+                  className="w-full h-auto sm:w-72 sm:h-72 rounded-2xl"
                 />
               </div>
             </div>

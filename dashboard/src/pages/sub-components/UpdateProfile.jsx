@@ -98,7 +98,7 @@ const UpdateProfile = () => {
     if (message) {
       toast.success(message);
     }
-  }, [dispatch, loading, error, isUpdated]);
+  }, [dispatch, loading, isUpdated, message]);
 
   return (
     <>
@@ -107,7 +107,7 @@ const UpdateProfile = () => {
           <div className="grid w-[100%] gap-6">
             <div className="grid gap-2">
               <h1 className="text-3xl font-bold">Update Profile</h1>
-              <p className="text-balance text-muted-foreground">
+              <p className="mb-5 text-center font-bold text-xl">
                 Update Your Profile Here
               </p>
             </div>
@@ -153,7 +153,7 @@ const UpdateProfile = () => {
                 <Label>Full Name</Label>
                 <Input
                   type="text"
-                  className="Your Full Name"
+                  placeholder="Your Full Name"
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
                 />
@@ -162,7 +162,7 @@ const UpdateProfile = () => {
                 <Label>Email</Label>
                 <Input
                   type="email"
-                  className="Your Email Address"
+                  placeholder="Your Email Address"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
@@ -171,7 +171,7 @@ const UpdateProfile = () => {
                 <Label>Phone</Label>
                 <Input
                   type="text"
-                  className="Phone Number"
+                  placeholder="Phone Number"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                 />
@@ -179,7 +179,7 @@ const UpdateProfile = () => {
               <div className="grid gap-2">
                 <Label>About Me</Label>
                 <Textarea
-                  className="About Me"
+                  placeholder="About Me"
                   value={aboutMe}
                   onChange={(e) => setAboutMe(e.target.value)}
                 />
@@ -188,7 +188,7 @@ const UpdateProfile = () => {
                 <Label>Portfolio URL</Label>
                 <Input
                   type="text"
-                  className="Portfolio URL"
+                  placeholder="Portfolio URL"
                   value={portfolioURL}
                   onChange={(e) => setPortfolioURL(e.target.value)}
                 />
@@ -198,7 +198,7 @@ const UpdateProfile = () => {
                 <Label>LinkedIn URL</Label>
                 <Input
                   type="text"
-                  className="LinkedIn URL"
+                  placeholder="LinkedIn URL"
                   value={linkedInURL}
                   onChange={(e) => setLinkedInURL(e.target.value)}
                 />
@@ -207,7 +207,7 @@ const UpdateProfile = () => {
                 <Label>Github URL</Label>
                 <Input
                   type="text"
-                  className="Github URL"
+                  placeholder="Github URL"
                   value={githubURL}
                   onChange={(e) => setGithubURL(e.target.value)}
                 />
@@ -216,7 +216,7 @@ const UpdateProfile = () => {
                 <Label>Instagram URL</Label>
                 <Input
                   type="text"
-                  className="Instagram URL"
+                  placeholder="Instagram URL"
                   value={instagramURL}
                   onChange={(e) => setInstagramURL(e.target.value)}
                 />
@@ -225,7 +225,7 @@ const UpdateProfile = () => {
                 <Label>Twitter URL</Label>
                 <Input
                   type="text"
-                  className="Twitter(X) URL"
+                  placeholder="Twitter(X) URL"
                   value={twitterURL}
                   onChange={(e) => setTwitterURL(e.target.value)}
                 />
@@ -234,7 +234,7 @@ const UpdateProfile = () => {
                 <Label>Facebook URL</Label>
                 <Input
                   type="text"
-                  className="Facebook URL"
+                  placeholder="Facebook URL"
                   value={facebookURL}
                   onChange={(e) => setFacebookURL(e.target.value)}
                 />
@@ -247,7 +247,7 @@ const UpdateProfile = () => {
                   Update Profile
                 </Button>
               ) : (
-                <LoadingButton content={"Updating"} />
+                <LoadingButton content={"Updating...."} />
               )}
             </div>
           </div>

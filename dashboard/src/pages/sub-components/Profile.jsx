@@ -30,7 +30,7 @@ const Profile = () => {
                 <img
                   src={user && user.resume && user.resume.url}
                   alt="resume"
-                  className="w-full h-auto sm:w-72 sm:h-72 rounded-2xl"
+                  className="w-full h-auto sm:w-72 sm:h-72 rounded-2xl" 
                 />
               </div>
             </div>

@@ -38,23 +38,18 @@ const Messages = () => {
     setMessageId(id);
     dispatch(deleteMessage(id));
   };
-
+  
   useEffect(() => {
-    console.log("Message state on render:", message); // This will log even if message is undefined or null
-
     if (error) {
       toast.error(error);
       dispatch(clearAllMessageErrors());
-      console.log("Error:", error);
+      // console.log(error);
     }
-
     if (message) {
       toast.success(message);
       dispatch(resetMessageSlice());
       dispatch(getAllMessages());
-      console.log("Success message:", message);
-    } else {
-      console.log("No message or message reset");
+      // console.log(message);
     }
   }, [dispatch, error, message, loading]);
 

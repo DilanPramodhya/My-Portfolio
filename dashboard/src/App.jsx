@@ -11,9 +11,10 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { getUser } from "./store/slices/userSlice";
 import "./App.css";
+import { getUser } from "./store/slices/userSlice";
 import { getAllMessages } from "./store/slices/messagesSlice";
+import { getAllTimeline } from "./store/slices/timelineSlice";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -21,6 +22,7 @@ const App = () => {
   useEffect(() => {
     dispatch(getUser());
     dispatch(getAllMessages());
+    dispatch(getAllTimeline);
   });
 
   return (

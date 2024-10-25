@@ -16,7 +16,6 @@ const timelineSchema = new mongoose.Schema({
     },
     to: {
       type: String,
-      required: [true, "Timeline ending date is required"],
     },
   },
 });

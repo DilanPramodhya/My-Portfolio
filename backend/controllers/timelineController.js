@@ -4,7 +4,6 @@ import { Timeline } from "../models/timelineSchema.js";
 
 export const postTimeline = catchAsyncErrors(async (req, res, next) => {
   const { title, description, from, to } = req.body;
-
   const newTimeline = await Timeline.create({
     title,
     description,
@@ -12,23 +11,21 @@ export const postTimeline = catchAsyncErrors(async (req, res, next) => {
   });
   res.status(200).json({
     success: true,
-    message: "Timeline added successfully",
+    message: "Timeline Added!",
     newTimeline,
   });
 });
 
 export const deleteTimeline = catchAsyncErrors(async (req, res, next) => {
   const { id } = req.params;
-
-  const timeline = await Timeline.findById(id);
-
+  let timeline = await Timeline.findById(id);
   if (!timeline) {
     return next(new ErrorHandler("Timeline not found", 404));
   }
   await timeline.deleteOne();
   res.status(200).json({
     success: true,
-    message: "Timeline deleted",
+    message: "Timeline Deleted!",
   });
 });
 

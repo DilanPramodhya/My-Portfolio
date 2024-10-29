@@ -5,7 +5,7 @@ import { v2 as cloudinary } from "cloudinary";
 
 export const addNewSkill = catchAsyncErrors(async (req, res, next) => {
   if (!req.files || Object.keys(req.files).length === 0) {
-    return next(new ErrorHandler("Fill full form", 400));
+    return next(new ErrorHandler("Image svg required", 400));
   }
   const { svg } = req.files;
   const { title, proficiency } = req.body;
@@ -85,9 +85,9 @@ export const updateSkill = catchAsyncErrors(async (req, res, next) => {
 });
 
 export const getAllSkills = catchAsyncErrors(async (req, res, next) => {
-  const getSkills = await Skill.find();
+  const skills = await Skill.find();
   res.status(200).json({
     success: true,
-    getSkills,
+    skills,
   });
 });

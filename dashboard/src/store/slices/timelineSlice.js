@@ -67,7 +67,7 @@ const timelineSlice = createSlice({
   },
 });
 
-export const getAllTimeline = () => async (dispatch) => {
+export const getAllTimelines = () => async (dispatch) => {
   dispatch(timelineSlice.actions.getAllTimelineRequests());
   try {
     const { data } = await axios.get(

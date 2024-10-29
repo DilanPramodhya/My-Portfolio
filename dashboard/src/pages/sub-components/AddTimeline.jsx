@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   addNewTimeline,
   clearAllTimelineErrors,
-  getAllTimeline,
+  getAllTimelines,
   resetTimelineSlice,
 } from "@/store/slices/timelineSlice";
 import { toast } from "react-toastify";
@@ -40,7 +40,7 @@ const AddTimeline = () => {
     if (message) {
       toast.success(message);
       dispatch(resetTimelineSlice());
-      dispatch(getAllTimeline());
+      dispatch(getAllTimelines());
     }
   }, [dispatch, loading, error, message]);
 
@@ -123,14 +123,13 @@ const AddTimeline = () => {
                 </div>
               </div>
             </div>
-            {
-              loading
-              ? <LoadingButton content={"Adding...."}/>
-              :
+            {loading ? (
+              <LoadingButton content={"Adding...."} />
+            ) : (
               <Button className="w-full" type="submit">
                 Add Timeline
               </Button>
-            }
+            )}
           </div>
         </form>
       </div>

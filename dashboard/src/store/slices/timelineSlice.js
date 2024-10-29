@@ -74,7 +74,7 @@ export const getAllTimelines = () => async (dispatch) => {
       "http://localhost:4000/api/v1/timeline/getAll",
       { withCredentials: true }
     );
-    dispatch(timelineSlice.actions.getAllTimelineSuccess(data.timelines));
+    dispatch(timelineSlice.actions.getAllTimelineSuccess(data.timeline));
     dispatch(timelineSlice.actions.clearAllErrors());
   } catch (error) {
     dispatch(

@@ -5,19 +5,19 @@ const projectSlice = createSlice({
   name: "project",
   initialState: {
     loading: false,
-    softwareApplications: [],
+    projects: [],
     error: null,
     message: null,
     singleProject: {},
   },
   reducers: {
     getAllProjectRequests(state) {
-      state.softwareApplications = [];
+      state.projects = [];
       state.error = null;
       state.loading = true;
     },
     getAllProjectSuccess(state, action) {
-      state.softwareApplications = action.payload;
+      state.projects = action.payload;
       state.error = null;
       state.loading = false;
     },

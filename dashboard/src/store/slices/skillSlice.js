@@ -113,7 +113,7 @@ export const deleteSkill = (id) => async (dispatch) => {
   }
 };
 
-export const clearAllTimelineErrors = () => (dispatch) => {
+export const clearAllSkillErrors = () => (dispatch) => {
   dispatch(skillSlice.actions.clearAllErrors());
 };
 

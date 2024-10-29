@@ -1,8 +1,9 @@
-import { addNewSkill, resetSkillsSlice } from "@/store/slices/skillSlice";
 import {
-  clearAllTimelineErrors,
-  getAllTimelines,
-} from "@/store/slices/timelineSlice";
+  addNewSkill,
+  clearAllSkillErrors,
+  getAllSkills,
+  resetSkillsSlice,
+} from "@/store/slices/skillSlice";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
@@ -12,10 +13,10 @@ import { Label } from "@/components/ui/label";
 import { PhotoIcon } from "@heroicons/react/24/solid";
 
 const AddSkill = () => {
-    const [title, setTitle] = useState("");
-    const [proficiency, setProficiency] = useState("");
-    const [svg, setSvg] = useState("");
-    const [svgPreview, setSvgPreview] = useState("");
+  const [title, setTitle] = useState("");
+  const [proficiency, setProficiency] = useState("");
+  const [svg, setSvg] = useState("");
+  const [svgPreview, setSvgPreview] = useState("");
 
   const { loading, error, message } = useSelector((state) => state.skill);
 
@@ -43,12 +44,12 @@ const AddSkill = () => {
   useEffect(() => {
     if (error) {
       toast.error(error);
-      dispatch(clearAllTimelineErrors());
+      dispatch(clearAllSkillErrors());
     }
     if (message) {
       toast.success(message);
       dispatch(resetSkillsSlice());
-      dispatch(getAllTimelines());
+      dispatch(getAllSkills());
     }
   }, [dispatch, loading, error, message]);
 

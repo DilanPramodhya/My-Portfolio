@@ -61,9 +61,9 @@ export const deleteApplication = catchAsyncErrors(async (req, res, next) => {
 });
 
 export const getAllApplications = catchAsyncErrors(async (req, res, next) => {
-  const getApplications = await SoftwareApplication.find();
+  const softwareApplications = await SoftwareApplication.find();
   res.status(200).json({
     success: true,
-    getApplications,
+    softwareApplications,
   });
 });

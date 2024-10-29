@@ -17,6 +17,7 @@ import { getUser } from "./store/slices/userSlice";
 import { getAllMessages } from "./store/slices/messagesSlice";
 import { getAllTimelines } from "./store/slices/timelineSlice";
 import { getAllSkills } from "./store/slices/skillSlice";
+import { getAllSoftwareApplications } from "./store/slices/softwareApplicationSlice";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -26,6 +27,7 @@ const App = () => {
     dispatch(getAllMessages());
     dispatch(getAllTimelines());
     dispatch(getAllSkills());
+    dispatch(getAllSoftwareApplications());
   });
 
   return (

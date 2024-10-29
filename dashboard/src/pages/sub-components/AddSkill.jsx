@@ -12,10 +12,10 @@ import { Label } from "@/components/ui/label";
 import { PhotoIcon } from "@heroicons/react/24/solid";
 
 const AddSkill = () => {
-  const [title, setTitle] = useState("");
-  const [proficiency, setProficiency] = useState("");
-  const [svg, setSvg] = useState("");
-  const [svgPreview, setSvgPreview] = useState("");
+    const [title, setTitle] = useState("");
+    const [proficiency, setProficiency] = useState("");
+    const [svg, setSvg] = useState("");
+    const [svgPreview, setSvgPreview] = useState("");
 
   const { loading, error, message } = useSelector((state) => state.skill);
 

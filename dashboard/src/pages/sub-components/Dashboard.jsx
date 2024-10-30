@@ -193,6 +193,9 @@ const Dashboard = () => {
                         return (
                           <Card key={element._id}>
                             <CardHeader>{element.title}</CardHeader>
+                            <CardContent>
+                              Proficiency : {element.proficiency}%
+                            </CardContent>
                             <CardFooter>
                               <Progress value={element.proficiency} />
                             </CardFooter>

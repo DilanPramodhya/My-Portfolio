@@ -66,11 +66,9 @@ const Dashboard = () => {
           <div className="grid auto-rows-max items-start md:gap-8 lg:col-span-2">
             <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4">
               <Card className="sm:col-span-2">
-                <CardHeader className="pb-3">
-                  <CardDescription className="max-w-lg text-balance leading-relaxed">
-                    {user.aboutMe}
-                  </CardDescription>
-                  <CardFooter>
+                <CardHeader className="pb-3 gap-6">
+                  <CardDescription className="">{user.aboutMe}</CardDescription>
+                  <CardFooter className="text-end justify-center">
                     <Link to={user.portfolioURL && user.portfolioURL}>
                       <Button>Visit Portfolio</Button>
                     </Link>
@@ -80,11 +78,11 @@ const Dashboard = () => {
               <Card className="flex flex-col justify-center">
                 <CardHeader className="pb-2">
                   <CardTitle>Projects Completed</CardTitle>
-                  <CardTitle className="text-6xl">
+                  <CardTitle className="text-6xl ml-44">
                     {projects && projects.length}
                   </CardTitle>
                 </CardHeader>
-                <CardFooter>
+                <CardFooter className="justify-end">
                   <Link to={"/manage/projects"}>
                     <Button>Manage Projects</Button>
                   </Link>
@@ -93,11 +91,11 @@ const Dashboard = () => {
               <Card className="flex flex-col justify-center">
                 <CardHeader className="pb-2">
                   <CardTitle>Skills</CardTitle>
-                  <CardTitle className="text-6xl">
+                  <CardTitle className="text-6xl ml-44">
                     {skills && skills.length}
                   </CardTitle>
                 </CardHeader>
-                <CardFooter>
+                <CardFooter className="justify-end">
                   <Link to={"/manage/skills"}>
                     <Button>Manage Skills</Button>
                   </Link>

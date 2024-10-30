@@ -2,7 +2,7 @@ import {
   addNewSkill,
   clearAllSkillErrors,
   getAllSkills,
-  resetSkillsSlice,
+  resetSkillSlice,
 } from "@/store/slices/skillSlice";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -48,7 +48,7 @@ const AddSkill = () => {
     }
     if (message) {
       toast.success(message);
-      dispatch(resetSkillsSlice());
+      dispatch(resetSkillSlice());
       dispatch(getAllSkills());
     }
   }, [dispatch, loading, error, message]);

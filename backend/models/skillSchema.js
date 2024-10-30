@@ -3,11 +3,9 @@ import mongoose from "mongoose";
 const skillSchema = new mongoose.Schema({
   title: {
     type: String,
-    required: true,
   },
   proficiency: {
-    type: String,
-    required: true,
+    type: Number,
   },
   svg: {
     public_id: {

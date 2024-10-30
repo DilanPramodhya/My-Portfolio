@@ -11,7 +11,7 @@ export const addNewSkill = catchAsyncErrors(async (req, res, next) => {
   const { title, proficiency } = req.body;
 
   if (!title || !proficiency) {
-    return next(new ErrorHandler("Title and Proficiency required"));
+    return next(new ErrorHandler("Please Fill Full Form"));
   }
 
   const cloudinaryResponse = await cloudinary.uploader.upload(

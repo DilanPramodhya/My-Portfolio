@@ -98,7 +98,7 @@ const UpdateProfile = () => {
     if (message) {
       toast.success(message);
     }
-  }, [dispatch, loading, isUpdated, message]);
+  }, [dispatch, loading, isUpdated, message, error]);
 
   return (
     <>

@@ -66,7 +66,9 @@ const ManageSkills = () => {
           <TabsContent>
             <Card>
               <CardHeader className="flex gap-4 sm:justify-between sm:flex-row sm:items-center  ">
-                <CardTitle>Manage Your Skills</CardTitle>
+                <CardTitle className="text-4xl text-blue-600">
+                  Manage Your Skills
+                </CardTitle>
                 <Link to={"/"}>
                   <Button className="w-fit">Return To Dashboard</Button>
                 </Link>

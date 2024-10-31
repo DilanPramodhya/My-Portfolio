@@ -49,7 +49,9 @@ const ManageTimeLine = () => {
           <TabsContent>
             <Card>
               <CardHeader className="flex gap-4 sm:justify-between sm:flex-row sm:items-center  ">
-                <CardTitle>Manage Your Timeline</CardTitle>
+                <CardTitle className="text-4xl text-blue-600">
+                  Manage Your Timeline
+                </CardTitle>
                 <Link to={"/"}>
                   <Button>Return To Dashboard</Button>
                 </Link>
@@ -100,7 +102,7 @@ const ManageTimeLine = () => {
                     ) : (
                       <TableRow>
                         <TableCell className="text-3xl font-bold text-center overflow-hidden">
-                          You Have Not Have Timeline
+                          You Don&apos;t Have Any Timeline
                         </TableCell>
                       </TableRow>
                     )}

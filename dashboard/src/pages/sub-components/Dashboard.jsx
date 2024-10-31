@@ -69,7 +69,10 @@ const Dashboard = () => {
                 <CardHeader className="pb-3 gap-6">
                   <CardDescription className="">{user.aboutMe}</CardDescription>
                   <CardFooter className="text-end justify-center">
-                    <Link to={user.portfolioURL && user.portfolioURL}>
+                    <Link
+                      to={user.portfolioURL && user.portfolioURL}
+                      target="_blank"
+                    >
                       <Button>Visit Portfolio</Button>
                     </Link>
                   </CardFooter>
@@ -316,7 +319,7 @@ const Dashboard = () => {
                         ) : (
                           <TableRow>
                             <TableCell className="text-3xl font-bold text-center overflow-hidden">
-                              You Have Not Have Timeline
+                              You Don&apos;t Have Any Timeline
                             </TableCell>
                           </TableRow>
                         )}

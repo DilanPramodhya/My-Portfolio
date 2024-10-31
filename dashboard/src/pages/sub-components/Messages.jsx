@@ -10,7 +10,6 @@ import {
 import { Tabs, TabsContent } from "@/components/ui/tabs";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import LoadingButton from "./LoadingButton";
 import {
   clearAllMessageErrors,
@@ -27,18 +26,13 @@ const Messages = () => {
 
   const [messageId, setMessageId] = useState("");
 
-  const navigateTo = useNavigate();
   const dispatch = useDispatch();
-
-  const handleReturnToDashboard = () => {
-    navigateTo("/");
-  };
 
   const handleMessageDelete = (id) => {
     setMessageId(id);
     dispatch(deleteMessage(id));
   };
-  
+
   useEffect(() => {
     if (error) {
       toast.error(error);
@@ -61,9 +55,6 @@ const Messages = () => {
             <Card>
               <CardHeader className="flex gap-4 sm:justify-between sm:flex-row sm:items-center">
                 <CardTitle>Messages</CardTitle>
-                <Button className="w-fit" onClick={handleReturnToDashboard}>
-                  Return to Dashboard
-                </Button>
               </CardHeader>
               <CardContent className="grid sm:grid-cols-2 gap-4">
                 {messages && messages.length > 0 ? (
@@ -101,7 +92,9 @@ const Messages = () => {
                     );
                   })
                 ) : (
-                  <CardHeader>No Messages Found</CardHeader>
+                  <CardHeader className="text-3xl font-bold items-center text-red-600">
+                    No Messages Found
+                  </CardHeader>
                 )}
               </CardContent>
             </Card>

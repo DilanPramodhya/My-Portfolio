@@ -55,7 +55,9 @@ const ManageProjects = () => {
           <TabsContent>
             <Card>
               <CardHeader className="flex gap-4 sm:justify-between sm:flex-row sm:items-center  ">
-                <CardTitle>Manage Your Project</CardTitle>
+                <CardTitle className="text-4xl text-blue-600">
+                  Manage Your Project
+                </CardTitle>
                 <Link to={"/"}>
                   <Button>Return To Dashboard</Button>
                 </Link>
@@ -163,7 +165,7 @@ const ManageProjects = () => {
                     ) : (
                       <TableRow>
                         <TableCell className="text-3xl font-bold text-center overflow-hidden">
-                          You Have Not Have Project
+                          You Do Not Have Any   Project
                         </TableCell>
                       </TableRow>
                     )}

@@ -213,6 +213,15 @@ const UpdateProfile = () => {
                 />
               </div>
               <div className="grid gap-2">
+                <Label>Facebook URL</Label>
+                <Input
+                  type="text"
+                  placeholder="Facebook URL"
+                  value={facebookURL}
+                  onChange={(e) => setFacebookURL(e.target.value)}
+                />
+              </div>
+              <div className="grid gap-2">
                 <Label>Instagram URL</Label>
                 <Input
                   type="text"
@@ -228,15 +237,6 @@ const UpdateProfile = () => {
                   placeholder="Twitter(X) URL"
                   value={twitterURL}
                   onChange={(e) => setTwitterURL(e.target.value)}
-                />
-              </div>
-              <div className="grid gap-2">
-                <Label>Facebook URL</Label>
-                <Input
-                  type="text"
-                  placeholder="Facebook URL"
-                  value={facebookURL}
-                  onChange={(e) => setFacebookURL(e.target.value)}
                 />
               </div>
               {!loading ? (

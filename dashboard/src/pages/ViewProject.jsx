@@ -54,7 +54,9 @@ const ViewProject = () => {
             <div className="border-b border-gray-900/10 pb-12">
               <div className="mt-10 flex flex-col gap-5">
                 <div className="w-full sm:col-span-4">
-                  <h1 className="text-4xl font-bold mb-4 text-blue-600">{title}</h1>
+                  <h1 className="text-4xl font-bold mb-4 text-blue-600">
+                    {title}
+                  </h1>
                   <img
                     src={
                       projectBanner
@@ -67,7 +69,7 @@ const ViewProject = () => {
                 </div>
                 <div className="w-full sm:col-span-4">
                   <p className="text-2xl mb-2">Description :</p>
-                  <ul className="list-disc">
+                  <ul className="list-disc ml-20">
                     {descriptionInListFormat.map((item, index) => {
                       return <li key={index}>{item}</li>;
                     })}
@@ -75,7 +77,7 @@ const ViewProject = () => {
                 </div>
                 <div className="w-full sm:col-span-4">
                   <p className="text-2xl mb-2">Technologies :</p>
-                  <ul className="list-disc">
+                  <ul className="list-disc ml-20">
                     {technologiesInListFormat.map((item, index) => {
                       return <li key={index}>{item}</li>;
                     })}

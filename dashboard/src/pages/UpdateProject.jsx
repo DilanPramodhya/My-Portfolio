@@ -19,6 +19,7 @@ import { Link, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import LoadingButton from "./sub-components/LoadingButton";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 const UpdateProject = () => {
   const [title, setTitle] = useState("");
@@ -107,7 +108,7 @@ const UpdateProject = () => {
           <div className="space-y-12">
             <div className="border-b border-gray-900/10 pb-12">
               <div className="flex justify-between items-center">
-                <h2 className="font-semibold leading-7 text-blue-600 text-4xl text-center">
+                <h2 className="font-semibold leading-7 text-blue-900 text-4xl text-center">
                   Update Project
                 </h2>
                 <Link to={"/"}>
@@ -235,7 +236,7 @@ const UpdateProject = () => {
                   </label>
                   <div className="mt-2">
                     <div>
-                      <input
+                      <Input
                         type="text"
                         placeholder="Paste Your Github Repository Link Here"
                         value={gitRepoLink}
@@ -250,7 +251,7 @@ const UpdateProject = () => {
                   </label>
                   <div className="mt-2">
                     <div>
-                      <input
+                      <Input
                         type="text"
                         placeholder="Paste Your Deployed Project Link Here"
                         value={projectLink}

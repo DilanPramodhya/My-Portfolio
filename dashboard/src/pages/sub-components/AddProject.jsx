@@ -19,6 +19,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Input } from "@/components/ui/input";
 
 const AddProject = () => {
   const [title, setTitle] = useState("");
@@ -186,7 +187,7 @@ const AddProject = () => {
                   </Label>
                   <div className="mt-2">
                     <div>
-                      <input
+                      <Input
                         type="text"
                         placeholder="Paste Your Github Repository Link Here"
                         value={gitRepoLink}
@@ -201,7 +202,7 @@ const AddProject = () => {
                   </Label>
                   <div className="mt-2">
                     <div>
-                      <input
+                      <Input
                         type="text"
                         placeholder="Paste Your Deployed Project Link Here"
                         value={projectLink}

@@ -29,7 +29,7 @@ const Hero = () => {
     <div className="w-full">
       <div className="flex items-center gap-2 mb-2">
         <span className="bg-green-500 rounded-full h-3 w-3"></span>
-        <p>Online</p>
+        <p className="font-bold">Online</p>
       </div>
       <h1 className="overflow-x-hidden text-[1.8rem] sm:text-[2.2rem] md:text-[3.0rem] lg:text-[4.0rem] tracking-[4px] mb-4">
         Hey, I&apos;m {user.fullName}

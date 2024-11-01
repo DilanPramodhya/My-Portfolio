@@ -41,7 +41,7 @@ const Portfolio = () => {
           </h1>
           <span className="absolute w-full h-1 top-7 sm:top-7 md:top-8 lg:top-14 z-[-1] bg-slate-200"></span>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4">
           {viewAll
             ? projects &&
               projects.map((element) => {

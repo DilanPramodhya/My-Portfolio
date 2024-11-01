@@ -52,6 +52,7 @@ const Timeline = () => {
               })
             : "Please add your Timeline"}
         </ol>
+        {/* <hr className="my-8 border-2 border-yellow-500 md:my-10" /> */}
       </div>
     </>
   );

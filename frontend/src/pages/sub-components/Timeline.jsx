@@ -50,7 +50,7 @@ const Timeline = () => {
                   </li>
                 );
               })
-            : "Please add your Timeline"}
+            : <div className="text-xl grid flex-col items-center">Please add your Timeline first</div>}
         </ol>
         {/* <hr className="my-8 border-2 border-yellow-500 md:my-10" /> */}
       </div>

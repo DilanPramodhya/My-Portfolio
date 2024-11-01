@@ -50,6 +50,7 @@ const Portfolio = () => {
                     <img
                       src={element.projectBanner && element.projectBanner.url}
                       alt={element.projectBanner}
+                      className="h-[100%] w-[100%]"
                     />
                   </Link>
                 );

@@ -19,8 +19,10 @@ import { getAllTimelines } from "./store/slices/timelineSlice";
 import { getAllSkills } from "./store/slices/skillSlice";
 import { getAllSoftwareApplications } from "./store/slices/softwareApplicationSlice";
 import { getAllProjects } from "./store/slices/projectSlice";
+import Register from "./pages/Register";
 
 const App = () => {
+    
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -36,6 +38,7 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/password/forgot" element={<ForgotPassword />} />
         <Route path="/password/reset/:token" element={<ResetPassword />} />

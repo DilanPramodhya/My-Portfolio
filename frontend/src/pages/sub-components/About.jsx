@@ -39,7 +39,7 @@ const About = () => {
           <div className="flex justify-center flex-col tracking-[1px] text-xl gap-5">
             <p>
               I am a trainee MERN Stack developer. I graduated in Software
-              Engineering from SLIATE around 2024. I work as a full stack we
+              Engineering from SLIATE around 2024. I work as a full stack
               developer in doing some freelance projects
             </p>
             <p>

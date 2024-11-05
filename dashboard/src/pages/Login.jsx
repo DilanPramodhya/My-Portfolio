@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { clearAllUserErrors, login } from "@/store/slices/userSlice";
 
-function ForgotPassword() {
+function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { loading, isAuthenticated, error } = useSelector(
@@ -33,18 +33,20 @@ function ForgotPassword() {
 
   return (
     <div>
-      <div className="w-full lg:grid lg:min-h-[100px] lg:grid-cols-2 xl:min-h-[100px]">
-        <div className="min-h-[100vh] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-gray-600">
-          <div className="mx-auto grid w-[350px] p-10 gap-6 border-4 border-blue-700 bg-blue-200">
+      <div className="w-full lg:grid lg:min-h-screen lg:grid-cols-2">
+        <div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-500">
+          <div className="mx-auto grid w-[350px] p-10 gap-6 border-4 border-white bg-white bg-opacity-90 rounded-lg shadow-lg">
             <div className="grid gap-2 text-center">
-              <h1 className="text-3xl font-bold">Login</h1>
-              <p className="text-balance text-muted-foreground">
+              <h1 className="text-3xl font-bold text-gray-800">Login</h1>
+              <p className="text-sm text-gray-600">
                 Enter your email & password below to login to your account
               </p>
             </div>
             <div className="grid gap-4">
               <div className="grid gap-2">
-                <Label htmlFor="email">Email</Label>
+                <Label htmlFor="email" className="text-gray-700">
+                  Email
+                </Label>
                 <Input
                   type="email"
                   placeholder="m@example.com"
@@ -55,10 +57,12 @@ function ForgotPassword() {
               </div>
               <div className="grid gap-2">
                 <div className="flex items-center">
-                  <Label htmlFor="password">Password</Label>
+                  <Label htmlFor="password" className="text-gray-700">
+                    Password
+                  </Label>
                   <Link
                     to={"/password/forgot"}
-                    className="ml-auto inline-block text-sm underline"
+                    className="ml-auto inline-block text-sm text-blue-600 underline"
                   >
                     Forgot your password?
                   </Link>
@@ -73,19 +77,29 @@ function ForgotPassword() {
               {loading ? (
                 <LoadingButton content={"Logging In"} />
               ) : (
-                <Button type="submit" className="w-full" onClick={handleLogin}>
+                <Button
+                  type="submit"
+                  className="w-full bg-blue-600 hover:bg-blue-700 text-white"
+                  onClick={handleLogin}
+                >
                   Login
                 </Button>
               )}
             </div>
+            <div className="font-bold text-center">
+              If you don&apos;t have an account, please
+              <Link to={"/register"}>
+                <Button className="bg-slate-600 text-white w-[30%] ml-2 hover:bg-slate-700">
+                  Sign Up
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
-        <div className="hidden bg-muted lg:block">
+        <div className="hidden lg:block">
           <img
-            src="/dashboard/public/placeholder.gif"
-            alt="Image"
-            width="1920"
-            height="1080"
+            src="/Login.gif"
+            alt="Login Illustration"
             className="h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
           />
         </div>
@@ -94,4 +108,4 @@ function ForgotPassword() {
   );
 }
 
-export default ForgotPassword;
+export default Login;

@@ -12,6 +12,24 @@ const userSlice = createSlice({
     isUpdated: false,
   },
   reducers: {
+    registerRequest(state) {
+      state.loading = true;
+      state.isAuthenticated = false;
+      state.user = {};
+      state.error = null;
+    },
+    registerSuccess(state, action) {
+      state.loading = false;
+      state.isAuthenticated = true;
+      state.user = action.payload;
+      state.error = null;
+    },
+    registerFailed(state, action) {
+      state.loading = false;
+      state.isAuthenticated = false;
+      state.user = {};
+      state.error = action.payload;
+    },
     loginRequest(state) {
       state.loading = true;
       state.isAuthenticated = false;
@@ -48,7 +66,7 @@ const userSlice = createSlice({
       state.user = {};
       state.error = action.payload;
     },
-    logoutSuccess(state, action) { 
+    logoutSuccess(state, action) {
       state.loading = false;
       state.isAuthenticated = false;
       state.user = {};
@@ -108,6 +126,26 @@ const userSlice = createSlice({
     },
   },
 });
+
+export const register = (data) => async (dispatch) => {
+  dispatch(userSlice.actions.updateProfileRequest());
+  try {
+    const response = await axios.post(
+      "http://localhost:4000/api/v1/user/register",
+      data,
+      {
+        withCredentials: true,
+        headers: { "Content-Type": "multipart/form-data" },
+      }
+    );
+    dispatch(userSlice.actions.updateProfileSuccess(response.data.user));
+    dispatch(userSlice.actions.clearAllErrors());
+  } catch (error) {
+    dispatch(
+      userSlice.actions.updateProfileFailed(error.response.data.message)
+    );
+  }
+};
 
 export const login = (email, password) => async (dispatch) => {
   dispatch(userSlice.actions.loginRequest());
@@ -178,7 +216,7 @@ export const updatePassword =
 export const updateProfile = (data) => async (dispatch) => {
   dispatch(userSlice.actions.updateProfileRequest());
   try {
-    const response  = await axios.put(
+    const response = await axios.put(
       "http://localhost:4000/api/v1/user/update/me",
       data,
       {

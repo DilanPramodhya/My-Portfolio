@@ -90,7 +90,7 @@ const ManageProjects = () => {
                                     element.projectBanner.url
                                   }
                                   alt={element.title}
-                                  className="w-24 h-20"
+                                  className="w-20 h-20"
                                 />
                               </div>
                             </TableCell>

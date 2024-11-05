@@ -37,56 +37,53 @@ function ForgotPassword() {
 
   return (
     <>
-      <div className="w-full lg:grid lg:min-h-[100px] lg:grid-cols-2 xl:min-h-[100px]">
-        <div className="min-h-[100vh] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-gray-600">
-          <div className="mx-auto grid w-[350px] p-10 gap-6 border-4 border-green-800  bg-blue-200">
+      <div className="w-full lg:grid lg:min-h-screen lg:grid-cols-2 xl:min-h-screen">
+        <div className="flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-purple-600 via-blue-500 to-teal-400 min-h-screen">
+          <div className="mx-auto grid w-[350px] p-10 gap-6 border-4 border-white bg-white bg-opacity-90 rounded-lg shadow-lg">
             <div className="grid gap-2 text-center">
-              <h1 className="text-3xl font-bold">Forgot Password</h1>
-              <p className="text-balance text-muted-foreground">
-                Enter your email to login to request for reset password
+              <h1 className="text-4xl font-bold text-gray-800">Forgot Password</h1>
+              <p className="text-md text-gray-600">
+                Enter your email to request a password reset link
               </p>
             </div>
             <div className="grid gap-4">
               <div className="grid gap-2">
-                <Label htmlFor="email">Email</Label>
+                <Label htmlFor="email" className="text-gray-700 font-medium">Email</Label>
                 <Input
                   type="email"
                   placeholder="m@example.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
+                  className="border-gray-300 rounded-md"
                 />
               </div>
-              <div className="grid gap-2">
-                <div className="flex items-center">
-                  <Link
-                    to={"/login"}
-                    className="ml-auto inline-block text-sm underline"
-                  >
-                    Remember your password?
-                  </Link>
-                </div>
+              <div className="flex items-center mt-2">
+                <Link
+                  to={"/login"}
+                  className="ml-auto inline-block text-sm text-blue-600 underline"
+                >
+                  Remember your password?
+                </Link>
               </div>
               {loading ? (
                 <LoadingButton content={"Requesting"} />
               ) : (
                 <Button
                   type="submit"
-                  className="w-full"
+                  className="w-full bg-indigo-600 hover:bg-indigo-700 text-white rounded-md py-2 transition duration-200"
                   onClick={handleForgotPassword}
                 >
-                  Request for reset Password
+                  Request Reset Password
                 </Button>
               )}
             </div>
           </div>
         </div>
-        <div className="hidden bg-muted lg:block">
+        <div className="hidden lg:block">
           <img
-            src="/dashboard/public/placeholder.gif"
-            alt="Image"
-            width="1920"
-            height="1080"
+            src="/forgot.gif"
+            alt="Forgot Password Illustration"
             className="h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
           />
         </div>

@@ -13,7 +13,7 @@ import skillRouter from "./routers/skillRoutes.js";
 import projectRouter from "./routers/projectRoutes.js";
 
 const app = express();
-dotenv.config({ path: "./config/config.env" });
+dotenv.config({ path: "./.env" });
 
 app.use(
   cors({
